@@ -1,19 +1,23 @@
-<div style="background-color: #041b2b;padding: 40px;padding-top: 80px;color: #fff">
+<div class="bg-detail-content">
     <div class="container">
-<div class="row">
-    <div class="col-5">
-         <img [src]=" data.image.original " height="500px" width="400px">
+        <div class="row">
+            <div class="col-5">
+                <img [src]=" data.image.original " height="500px" width="400px">
+            </div>
+            <div class="col-6 p-t-20">
+                <h3>{{data.name}}</h3>
+                <div class="d-flex">
+                    <h5>{{data.language}}</h5>&nbsp;|&nbsp;<h5>{{data.runtime}}&nbsp;minutes</h5>
+                </div>
+                <div class="d-flex">
+                    <h5><i class="fa fa-clock-o" aria-hidden="true"></i> {{data.schedule.time}}</h5>&nbsp;<h5>
+                        &nbsp;|&nbsp;<span class="icon-color"><i class="fa fa-star" aria-hidden="true"></i></span>
+                        {{data.rating.average}} / 10</h5>
+                </div>
+                <h6 [innerHTML]="data.summary" class="desc-content"></h6>
+                <h6>Status: {{data.status}}</h6>
+            </div>
+            <div class="col-1"></div>
+        </div>
     </div>
-    <div class="col-6" style="padding-top: 20px;">
-        <h3>{{data.name}}</h3>
-        <div style="display: flex"><h5>{{data.language}}</h5>&nbsp;|&nbsp;<h5>{{data.runtime}}&nbsp;minutes</h5></div>
-        <div style="display: flex"><h5><i class="fa fa-clock-o"
-                            aria-hidden="true"></i> {{data.schedule.time}}</h5>&nbsp;<h5>&nbsp;|&nbsp;<i class="fa fa-star"
-                            aria-hidden="true" style="color: yellow"></i> {{data.rating.average}} / 10</h5></div>
-    <h6  [innerHTML]="data.summary" style="font-weight: 400;line-height: 1.3;text-align: justify"></h6>
-
-    </div>
-    <div class="col-1"></div>
-</div>
-</div>
 </div>

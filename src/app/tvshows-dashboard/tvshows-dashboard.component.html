@@ -1,52 +1,52 @@
-
-  <div  style="background-color: #041b2b;padding: 40px;padding-top: 80px;">
-      <div class="row">
+<div class="bg-content">
+  <form [formGroup]="myform">
+    <div class="row">
       <div class="col-5">
-        <h5 style="padding-left: 20px;color: #fff"> Watch Series Online</h5>
-        </div>
-          <div  class="col-2">
-               <div class="form-group">
-      <select class="form-control custom" id="inputGroupSelect04">
-        <option selected>Show Status</option>
-        <option value="1">Running</option>
-        <option value="2">To Be Determined</option>
-        <option value="3">In Development</option>
-      </select>
-    </div>
-          </div>
-    <div  class="col-2">
-               <div class="form-group">
-      <select class="form-control custom" id="inputGroupSelect04">
-        <option selected>Rating</option>
-        <option value="1">2+</option>
-        <option value="2">3+</option>
-        <option value="3">4+</option>
-        <option value="3">5+</option>
-        <option value="3">6+</option>
-        <option value="3">7+</option>
-        <option value="3">8+</option>
-        <option value="3">9+</option>
-      </select>
-    </div>
-          </div>
-              <div  class="col-2">
-               <div class="form-group">
-      <select class="form-control custom" id="inputGroupSelect04">
-        <option selected>Sort by</option>
-        <option value="1">Most popular</option>
-        <option value="2">Least popular</option>
-      </select>
-    </div>
-          </div>
-          <div class="col-1">
-          </div>
+        <h5 class="header-title"> Watch Series Online</h5>
       </div>
-         <hr class="border-color">
- 
-    <app-show-list [genreInput]="'Drama'" [searchResults]="showsDataDrama"></app-show-list>
-    <hr class="border-color">
-    <app-show-list [genreInput]="'Comedy'" [searchResults]="showsDataComedy"></app-show-list>
-    <hr class="border-color">
-    <app-show-list [genreInput]="'Sports'" [searchResults]="showsDataSports"></app-show-list>
-    <hr class="border-color">
-  </div>
+      <div class="col-2">
+        <div class="form-group">
+          <select class="form-control custom" formControlName="showStatus" (change)="statusChange($event.target.value)">
+            <option selected>Show Status</option>
+            <option value="Running">Running</option>
+            <option value="Ended">Ended</option>
+            <option value="3">In Development</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group">
+          <select class="form-control custom" formControlName="showRating" (change)="ratingChange($event.target.value)">
+            <option selected>Rating</option>
+            <option value="9">9+</option>
+            <option value="8">8+</option>
+            <option value="7">7+</option>
+            <option value="6">6+</option>
+            <option value="5">5+</option>
+            <option value="4">4+</option>
+            <option value="3">3+</option>
+            <option value="2">2+</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group">
+          <select class="form-control custom" formControlName="sortBy" (change)="sortChange($event.target.value)">
+            <option selected>Sort by</option>
+            <option value="A-Z">A-Z</option>
+            <option value="Z-A">Z-A</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </form>
+  <hr class="border-color">
+  <app-show-list [genreInput]="'Drama'" [searchResults]="showsDataDrama"></app-show-list>
+  <hr class="border-color">
+  <app-show-list [genreInput]="'Comedy'" [searchResults]="showsDataComedy"></app-show-list>
+  <hr class="border-color">
+  <app-show-list [genreInput]="'Sports'" [searchResults]="showsDataSports"></app-show-list>
+  <hr class="border-color">
+</div>

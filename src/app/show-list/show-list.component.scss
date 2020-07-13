@@ -1,0 +1,35 @@
+.show-title {
+    color: #fff;
+    font-size: 1.2em;
+    float: left;
+    padding-left: 10px;
+}
+.prev-button {
+    color: #fff;
+    padding-right: 40px;
+    cursor: pointer;
+}
+.next-button {
+    color: #fff;
+    cursor: pointer;
+}
+.flex-wrap.clear {
+    clear: left;
+}
+.card.custom {
+    width: 13rem;
+    text-align: center;
+    .card-body-custom {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .card-title {
+        float: left;
+        font-size: 0.9rem;
+        cursor: pointer;
+    }
+    .caption {
+        float: right;
+        font-size: 0.9rem;
+    }
+}

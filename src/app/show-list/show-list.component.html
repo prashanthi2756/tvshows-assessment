@@ -1,45 +1,32 @@
 <div>
     <div class="row">
         <div class="col-2">
-            <h6 style="color: #fff;font-size: 1.2em;float: left;padding-left: 10px;">
+            <h6 class="show-title">
                 {{genre ? genre : 'Search Results:'}}
             </h6>
         </div>
         <div class="col-8"></div>
         <div class="col-2">
-            <span (click)="prev()" style="color: #fff;padding-right: 40px;cursor: pointer;">
+            <span (click)="prev()" class="prev-button">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
             </span>
-            <span (click)="next()" style="color: #fff;cursor: pointer;">
+            <span (click)="next()" class="next-button">
                 <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </span>
         </div>
     </div>
-    <div class="d-flex flex-wrap" style="clear: left;">
+    <div class="d-flex flex-wrap clear">
         <div class="p-2 item" *ngFor="let item of showsData | slice:start:end;">
-            <div class="card" style="width: 13rem;text-align: center;">
+            <div class="card custom">
                 <img [src]="item.image ? item.image.medium : '/assets/images/no_image_available.png'">
-                <div style="padding-left: 2px;padding-right: 2px;">
-                    <h6 [routerLink]="['/show-details', item.id]"
-                        style="float: left;font-size: 0.9rem;cursor: pointer;">{{item.name}}
+                <div class="card-body-custom">
+                    <h6 [routerLink]="['/show-details', item.id]">{{item.name}}
                     </h6>
-                    <h6 class="caption" style="float: right;font-size: 0.9rem;">
+                    <h6 class="caption" >
                         {{item.rating.average ? item.rating.average : 'NA'}}<i class="fa fa-star"
                             aria-hidden="true"></i></h6>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="row">
-        <div class="col-1">
-            <button class="btn btn-default" style="color:#fff"><i class="fa fa-angle-left" aria-hidden="true"></i>
-                &nbsp;Prev</button>
-        </div>
-        <div class="col-10">
-        </div>
-        <div class="col-1">
-            <button class="btn btn-default" style="color:#fff">Next&nbsp;<i class="fa fa-angle-right"
-                    aria-hidden="true"></i></button>
-        </div>
-    </div> -->
 </div>

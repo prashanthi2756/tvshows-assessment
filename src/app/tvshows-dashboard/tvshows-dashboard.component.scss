@@ -1,15 +1,24 @@
 .border-color {
     border-top: 1px solid rgba(247, 245, 245, 0.1);
 }
+.bg-content {
+    background-color: #041b2b;
+    padding: 40px;
+    padding-top: 80px;
+}
 .form-control.custom {
-padding-top: 2px;
+    padding-top: 2px;
     height: 32px;
     background-color: inherit;
     color: #fff;
     option {
-color: #000;
+        color: #000;
     }
 }
 .col-2 {
-padding-left: 0;
+    padding-left: 0;
+ }
+ .header-title {
+    padding-left: 20px;
+    color: #fff;
  }
