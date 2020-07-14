@@ -15,21 +15,16 @@ export class ShowListComponent implements OnInit {
   genre: string;
   isLoading = false;
   searchText: string;
-  showsData: any;
+  showsData: any[] = [];
   constructor() { }
 
   ngOnInit(): void {
   }
-  ngOnChanges(data: any) {
-    // if (changes.searchInput) {
-    //   this.searchText = changes.searchInput.currentValue;
-    // }
-    if (data.genreInput) {
-      this.genre = data.genreInput.currentValue;
-    }
-    if (data.searchResults) {
-      this.showsData = data.searchResults.currentValue ? data.searchResults.currentValue : [];
-    }
+  ngOnChanges() {
+    this.genre = this.genreInput;
+    this.showsData = this.searchResults ? this.searchResults : [];
+    this.start = 0;
+    this.end = this.maxItems;
   }
   prev() {
     this.start -= this.maxItems;

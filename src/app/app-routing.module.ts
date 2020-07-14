@@ -5,8 +5,9 @@ import { ShowDetailComponent } from './show-detail/show-detail.component';
 
 const routes: Routes =
   [
-    { path: '', component: TvshowsDashboardComponent },
+    { path: '', component: TvshowsDashboardComponent, pathMatch: 'full' },
     { path: 'show-details/:id', component: ShowDetailComponent },
+    { path: '**', component: ShowDetailComponent }
   ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

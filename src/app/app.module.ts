@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {
-  FormsModule,
+  ReactiveFormsModule, FormsModule,
 } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,19 +9,22 @@ import { TvshowsDashboardComponent } from './tvshows-dashboard/tvshows-dashboard
 import { HttpClientModule } from '@angular/common/http';
 import { ShowListComponent } from './show-list/show-list.component';
 import { ShowDetailComponent } from './show-detail/show-detail.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TvshowsDashboardComponent,
     ShowListComponent,
-    ShowDetailComponent
+    ShowDetailComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

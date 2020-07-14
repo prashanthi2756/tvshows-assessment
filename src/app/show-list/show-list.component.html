@@ -1,28 +1,29 @@
 <div>
     <div class="row">
-        <div class="col-2">
+        <div class="col-6">
             <h6 class="show-title">
-                {{genre ? genre : 'Search Results:'}}
+                {{genre ? genre : 'Search results related to : ' + searchInput }}
             </h6>
         </div>
-        <div class="col-8"></div>
+        <div class="col-4"></div>
         <div class="col-2">
-            <span (click)="prev()" class="prev-button">
+            <span (click)="prev()" class="prev-button" *ngIf="showsData.length && start > 0">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
             </span>
-            <span (click)="next()" class="next-button">
+            <span (click)="next()" class="next-button" *ngIf="showsData.length && end < showsData.length-1">
                 <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </span>
         </div>
     </div>
     <div class="d-flex flex-wrap clear">
+        <h6 class="show-results" *ngIf="showsData.length == 0">No results found</h6>
         <div class="p-2 item" *ngFor="let item of showsData | slice:start:end;">
             <div class="card custom">
-                <img [src]="item.image ? item.image.medium : '/assets/images/no_image_available.png'">
+                <img [src]="item.image ? item.image.medium : '/assets/images/no-image.png'" height="290">
                 <div class="card-body-custom">
-                    <h6 [routerLink]="['/show-details', item.id]">{{item.name}}
+                    <h6 [routerLink]="['/show-details', item.id]" class="card-title">{{item.name}}
                     </h6>
-                    <h6 class="caption" >
+                    <h6 class="caption">
                         {{item.rating.average ? item.rating.average : 'NA'}}<i class="fa fa-star"
                             aria-hidden="true"></i></h6>
                 </div>

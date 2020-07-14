@@ -36,15 +36,7 @@ describe('ShowDetailComponent', () => {
   it('should call API to get Show details', () => {
     spyOn(component, 'loadData');
     component.ngOnInit();
-    expect(typeof(component.loadData)).toBe('object');
-    // expect(component.loadData.length).toBe(1);
-
+    spyOn(TvshowsService.prototype, 'getShowDetail').and.returnValue(of(JSON.parse(testData)));
+    component.loadData();
   });
-
-  // it('should call API to get Show details', () => {
-  //   spyOn(HttpService.prototype, 'get').and.returnValue(throwError('error'));
-  //   component.ngOnInit();
-  //   expect(component.hasError).toBeTruthy();
-  // });
-
 });

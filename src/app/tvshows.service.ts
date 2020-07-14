@@ -14,4 +14,7 @@ export class TvshowsService {
   getShowDetail(id: number): Observable<any> {
     return this.http.get<any>(`http://api.tvmaze.com/shows/` + id);
   }
+  showSearch(searchText: string): Observable<any> {
+    return this.http.get<any>(`http://api.tvmaze.com/search/shows?q=`  + searchText);
+  }
 }

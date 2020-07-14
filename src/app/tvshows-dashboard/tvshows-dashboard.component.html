@@ -1,13 +1,13 @@
 <div class="bg-content">
-  <form [formGroup]="myform">
-    <div class="row">
+  <form [formGroup]="showsForm">
+    <div class="row" *ngIf="!searchInput">
       <div class="col-5">
         <h5 class="header-title"> Watch Series Online</h5>
       </div>
       <div class="col-2">
         <div class="form-group">
-          <select class="form-control custom" formControlName="showStatus" (change)="statusChange($event.target.value)">
-            <option selected>Show Status</option>
+          <select class="form-control custom" formControlName="showStatus" (change)="statusChange()">
+            <option value="">Show Status</option>
             <option value="Running">Running</option>
             <option value="Ended">Ended</option>
             <option value="3">In Development</option>
@@ -16,8 +16,8 @@
       </div>
       <div class="col-2">
         <div class="form-group">
-          <select class="form-control custom" formControlName="showRating" (change)="ratingChange($event.target.value)">
-            <option selected>Rating</option>
+          <select class="form-control custom" formControlName="showRating" (change)="ratingChange()">
+            <option value=''>Rating</option>
             <option value="9">9+</option>
             <option value="8">8+</option>
             <option value="7">7+</option>
@@ -32,7 +32,7 @@
       <div class="col-2">
         <div class="form-group">
           <select class="form-control custom" formControlName="sortBy" (change)="sortChange($event.target.value)">
-            <option selected>Sort by</option>
+            <option value="">Sort by</option>
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
           </select>
@@ -43,10 +43,15 @@
     </div>
   </form>
   <hr class="border-color">
-  <app-show-list [genreInput]="'Drama'" [searchResults]="showsDataDrama"></app-show-list>
-  <hr class="border-color">
-  <app-show-list [genreInput]="'Comedy'" [searchResults]="showsDataComedy"></app-show-list>
-  <hr class="border-color">
-  <app-show-list [genreInput]="'Sports'" [searchResults]="showsDataSports"></app-show-list>
-  <hr class="border-color">
+  <ng-container *ngIf="searchInput">
+    <app-show-list [searchResults]="searchResults" [searchInput]="searchInput"></app-show-list>
+  </ng-container>
+  <ng-container *ngIf="!searchInput">
+    <app-show-list [genreInput]="'Drama'" [searchResults]="showsDataDrama"></app-show-list>
+    <hr class="border-color">
+    <app-show-list [genreInput]="'Comedy'" [searchResults]="showsDataComedy"></app-show-list>
+    <hr class="border-color">
+    <app-show-list [genreInput]="'Sports'" [searchResults]="showsDataSports"></app-show-list>
+    <hr class="border-color">
+  </ng-container>
 </div>

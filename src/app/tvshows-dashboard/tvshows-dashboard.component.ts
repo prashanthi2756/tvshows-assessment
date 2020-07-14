@@ -2,32 +2,51 @@ import { Component, OnInit } from '@angular/core';
 import { TvshowsService } from '../tvshows.service';
 import {
   FormControl,
-  FormGroup
+  FormGroup,
+  FormBuilder
 } from '@angular/forms';
+import { ShowSearchService } from '../show-search.service';
+
 @Component({
   selector: 'app-tvshows-dashboard',
   templateUrl: './tvshows-dashboard.component.html',
   styleUrls: ['./tvshows-dashboard.component.scss']
 })
 export class TvshowsDashboardComponent implements OnInit {
-  data: any[];
-  pageNum = 1;
-  showsDataDrama: any[];
-  showsDataSports: any[];
-  showsDataComedy: any[];
-  showStatus: FormControl;
-  showRating: FormControl;
-  sortBy: FormControl;
-  myform: FormGroup;
+  data: any = [];
+  showsDataDrama: any = [];
+  showsDataSports: any = [];
+  showsDataComedy: any = [];
+  searchResults: any = [];
+  searchInput: string;
+  showStatus: string;
+  showRating: string;
+  sortBy: string;
+  showsForm = new FormGroup({
+    showStatus: new FormControl(),
+    showRating: new FormControl(),
+    sortBy: new FormControl()
+  });
   constructor(
     private tvshowsService: TvshowsService,
+    private showSearchService: ShowSearchService,
+    private fb: FormBuilder,
+
   ) { }
 
   ngOnInit() {
-    this.showRating = new FormControl();
-    this.showStatus = new FormControl();
-    this.sortBy = new FormControl();
+    this.showsForm = this.fb.group({
+      showStatus: '',
+      showRating: '',
+      sortBy: ''
+    });
     this.loadData();
+    this.showSearchService.showsData.subscribe( (data: any) => {
+      this.searchResults = data
+    })
+    this.showSearchService.searchInput.subscribe( (data: any) => {
+      this.searchInput = data
+    })
   }
   loadData() {
     this.tvshowsService.getShowList().subscribe((data: any) => {
@@ -36,25 +55,22 @@ export class TvshowsDashboardComponent implements OnInit {
     });
   }
   genreData() {
-    this.showsDataDrama = this.data.filter(item => (item.genres.indexOf('Drama') >= 0))
-    this.showsDataComedy = this.data.filter(item => (item.genres.indexOf('Comedy') >= 0))
-    this.showsDataSports = this.data.filter(item => (item.genres.indexOf('Sports') >= 0))
+     this.showStatus = this.showsForm.controls['showStatus'].value;
+     this.showRating = this.showsForm.controls['showRating'].value;
+    this.showsDataDrama = this.data.filter(item => (this.showStatus  ? item.genres.indexOf('Drama') >= 0 && item.status === this.showStatus  && item.rating.average >= this.showRating  : item.genres.indexOf('Drama') >= 0 && item.rating.average >= this.showRating));
+    this.showsDataComedy = this.data.filter(item => (this.showStatus  ? item.genres.indexOf('Comedy') >= 0 && item.status === this.showStatus  && item.rating.average >= this.showRating  : item.genres.indexOf('Comedy') >= 0 && item.rating.average >= this.showRating));
+    this.showsDataSports = this.data.filter(item => (this.showStatus  ? item.genres.indexOf('Sports') >= 0 && item.status === this.showStatus  && item.rating.average >= this.showRating  : item.genres.indexOf('Sports') >= 0 && item.rating.average >= this.showRating));
   }
-  ratingChange(value: any) {
+  ratingChange() {
     this.genreData();
-    this.showsDataDrama = this.showsDataDrama.filter(item => item.rating.average >= value)
-    this.showsDataComedy = this.showsDataComedy.filter(item => item.rating.average >= value)
-    this.showsDataSports = this.showsDataSports.filter(item => item.rating.average >= value)
-    this.showStatus.setValue('');
   }
-  statusChange(status: any) {
+  statusChange() {
     this.genreData();
-    this.showsDataDrama = this.showsDataDrama.filter(item => item.status === status)
-    this.showsDataComedy = this.showsDataComedy.filter(item => item.status === status)
-    this.showsDataSports = this.showsDataSports.filter(item => item.status === status)
-    this.showRating.setValue('');
   }
-  sortChange(value) {
-    this.showsDataDrama = this.showsDataDrama.sort((a, b) => (a[name].toLowerCase().localeCompare(b[name].toLowerCase())))
+  sortChange() {
+    const value = this.showsForm.controls['sortBy'].value;
+    this.showsDataDrama = this.showsDataDrama.sort((a, b) => (value === 'A-Z' ? ((a.name > b.name) ? 1 : -1) : ((b.name > a.name) ? 1 : -1)));
+    this.showsDataComedy = this.showsDataComedy.sort((a, b) => (value === 'A-Z' ? ((a.name > b.name) ? 1 : -1) : ((b.name > a.name) ? 1 : -1)));
+    this.showsDataSports = this.showsDataSports.sort((a, b) => (value === 'A-Z' ? ((a.name > b.name) ? 1 : -1) : ((b.name > a.name) ? 1 : -1)));
   }
 }

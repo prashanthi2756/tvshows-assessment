@@ -1,8 +1,9 @@
 <div class="bg-detail-content">
-    <div class="container">
+    <div class="container" *ngIf="data">
         <div class="row">
             <div class="col-5">
-                <img [src]=" data.image.original " height="500px" width="400px">
+                <img [src]="data.image ? data.image.original : '/assets/images/no-image.png' " height="500px"
+                    width="400px">
             </div>
             <div class="col-6 p-t-20">
                 <h3>{{data.name}}</h3>
@@ -14,8 +15,11 @@
                         &nbsp;|&nbsp;<span class="icon-color"><i class="fa fa-star" aria-hidden="true"></i></span>
                         {{data.rating.average}} / 10</h5>
                 </div>
+                <h6><span class="caption">Premiered:</span> {{data.premiered | date:'MMM d, y'}}</h6>
+                <h6><span class="caption">Scheduled:</span> {{data.schedule.days.join(', ')}} at
+                    {{data.schedule.time}}</h6>
                 <h6 [innerHTML]="data.summary" class="desc-content"></h6>
-                <h6>Status: {{data.status}}</h6>
+                <h6>Show Status: {{data.status}}</h6>
             </div>
             <div class="col-1"></div>
         </div>

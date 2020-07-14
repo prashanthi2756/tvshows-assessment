@@ -4,13 +4,23 @@
     float: left;
     padding-left: 10px;
 }
+.show-results {
+    color: #fff;
+    font-size: 1em;
+    float: left;
+    padding: 10px;
+}
 .prev-button {
     color: #fff;
     padding-right: 40px;
     cursor: pointer;
+    background-color: inherit;
+    border: none;
 }
 .next-button {
     color: #fff;
+    background-color: inherit;
+    border: none;
     cursor: pointer;
 }
 .flex-wrap.clear {
@@ -22,14 +32,16 @@
     .card-body-custom {
         padding-left: 2px;
         padding-right: 2px;
+        .card-title {
+            float: left;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .caption {
+            float: right;
+            font-size: 0.9rem;
+        }
     }
-    .card-title {
-        float: left;
-        font-size: 0.9rem;
-        cursor: pointer;
-    }
-    .caption {
-        float: right;
-        font-size: 0.9rem;
-    }
+   
+  
 }
