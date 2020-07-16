@@ -9,8 +9,8 @@ import { TvshowsService } from '../tvshows.service';
   styleUrls: ['./show-detail.component.scss']
 })
 export class ShowDetailComponent implements OnInit {
-  id: any;
   data: any;
+  id: any;
   constructor(
     private route: ActivatedRoute,
     private tvshowsService: TvshowsService

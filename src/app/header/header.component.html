@@ -6,7 +6,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-        </ul>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="" routerLinkActive="active">All Shows</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="category" routerLinkActive="active">Shows by Category</a>
+            </li>
+          </ul>
         <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-md-2" type="text" placeholder="Search TV Shows" name="searchValue"
                 [(ngModel)]="searchValue" aria-label="Search">

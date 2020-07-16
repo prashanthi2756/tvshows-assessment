@@ -1,24 +1,26 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-show-list',
-  templateUrl: './show-list.component.html',
-  styleUrls: ['./show-list.component.scss']
+  selector: 'app-show-list-template',
+  templateUrl: './show-list-template.component.html',
+  styleUrls: ['./show-list-template.component.scss']
 })
-export class ShowListComponent implements OnInit {
+export class ShowListTemplateComponent implements OnInit {
   @Input() searchResults: any[];
-  @Input() searchInput: any[];
+  @Input() allShows;
   @Input() genreInput: string;
-  start = 0;
-  maxItems = 5;
-  end = this.maxItems;
+  start: number;
+  maxItems: number;
+  end: number;
   genre: string;
-  isLoading = false;
   searchText: string;
   showsData: any[] = [];
   constructor() { }
 
   ngOnInit(): void {
+    this.start = 0;
+    this.maxItems = !this.allShows ? 5 : 0;
+    this.end = this.maxItems;
   }
   ngOnChanges() {
     this.genre = this.genreInput;

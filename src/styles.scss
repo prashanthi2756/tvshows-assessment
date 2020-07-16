@@ -5,3 +5,10 @@ $themecolor: #0e5384 ;
 .bg-color {
     background-color: $themecolor;
 }
+.breadcrumb.custom {
+    background-color: inherit;
+    font-size: 18px;
+    .breadcrumb-item.active {
+        color: #fff;
+    }
+}

@@ -4,14 +4,17 @@ import { HeaderComponent } from './header.component';
 import { ShowSearchService } from '../show-search.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, } from '@angular/common/http/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
+  let publicComponent: any;
   let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
-      imports: [ HttpClientTestingModule ],
+      imports: [ HttpClientTestingModule,RouterTestingModule ],
 
       providers: [ShowSearchService, HttpClient]
     })
@@ -20,15 +23,26 @@ describe('HeaderComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
+    publicComponent = component =  fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should call search results', inject([ShowSearchService], (service: ShowSearchService)  => {
+  it('searching for tv shows', () => {
+    spyOn(publicComponent.shows, 'getSearchResults').and.callThrough();
     component.search('drama');
-    service.getSearchResults('drama');
-  }));
+  });
+
+
+  it('user should naviagte to details pages when selected the search item', () => {
+    spyOn(publicComponent.router, 'navigate').and.returnValue(true);
+    component.search('drama');
+    expect(publicComponent.router.navigate).toHaveBeenCalledWith(['show-search']);
+  });
+  // it('should call search results', inject([ShowSearchService, Router], (service: ShowSearchService)  => {
+  //   spyOn(service, 'getSearchResults');
+  //   component.search('drama');
+  // }));
 });

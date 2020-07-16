@@ -1,22 +1,22 @@
 <div class="bg-content">
   <form [formGroup]="showsForm">
-    <div class="row" *ngIf="!searchInput">
-      <div class="col-5">
+    <div class="row" *ngIf="allShows">
+      <div class="col-md-5">
         <h5 class="header-title"> Watch Series Online</h5>
       </div>
-      <div class="col-2">
+      <div class="col-md-2">
         <div class="form-group">
-          <select class="form-control custom" formControlName="showStatus" (change)="statusChange()">
+          <select class="form-control custom" formControlName="showStatus" (change)="genreData()">
             <option value="">Show Status</option>
             <option value="Running">Running</option>
             <option value="Ended">Ended</option>
-            <option value="3">In Development</option>
+            <option value="To Be Determined">To Be Determined</option>
           </select>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-md-2">
         <div class="form-group">
-          <select class="form-control custom" formControlName="showRating" (change)="ratingChange()">
+          <select class="form-control custom" formControlName="showRating" (change)="genreData()">
             <option value=''>Rating</option>
             <option value="9">9+</option>
             <option value="8">8+</option>
@@ -29,29 +29,29 @@
           </select>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-md-2">
         <div class="form-group">
-          <select class="form-control custom" formControlName="sortBy" (change)="sortChange($event.target.value)">
+          <select class="form-control custom" formControlName="sortBy" (change)="genreData()">
             <option value="">Sort by</option>
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
           </select>
         </div>
       </div>
-      <div class="col-1">
+      <div class="col-md-1">
       </div>
     </div>
   </form>
   <hr class="border-color">
-  <ng-container *ngIf="searchInput">
-    <app-show-list [searchResults]="searchResults" [searchInput]="searchInput"></app-show-list>
+  <ng-container *ngIf="allShows">
+    <app-show-list-template [searchResults]="allShowsData" [allShows]="allShows"></app-show-list-template>
   </ng-container>
-  <ng-container *ngIf="!searchInput">
-    <app-show-list [genreInput]="'Drama'" [searchResults]="showsDataDrama"></app-show-list>
+  <ng-container *ngIf="!allShows">
+    <app-show-list-template [genreInput]="'Drama'" [searchResults]="showsDataDrama"></app-show-list-template>
     <hr class="border-color">
-    <app-show-list [genreInput]="'Comedy'" [searchResults]="showsDataComedy"></app-show-list>
+    <app-show-list-template [genreInput]="'Comedy'" [searchResults]="showsDataComedy"></app-show-list-template>
     <hr class="border-color">
-    <app-show-list [genreInput]="'Sports'" [searchResults]="showsDataSports"></app-show-list>
+    <app-show-list-template [genreInput]="'Sports'" [searchResults]="showsDataSports"></app-show-list-template>
     <hr class="border-color">
   </ng-container>
 </div>

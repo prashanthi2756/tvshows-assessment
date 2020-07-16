@@ -1,11 +1,16 @@
-<div class="bg-detail-content">
-    <div class="container" *ngIf="data">
+<div class="bg-detail-content" *ngIf="data">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb custom">
+            <li class="breadcrumb-item"><a routerLink="">Home (All Shows)</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{data.name}}</li>
+        </ol>
+    </nav>
+    <div class="container">
         <div class="row">
-            <div class="col-5">
-                <img [src]="data.image ? data.image.original : '/assets/images/no-image.png' " height="500px"
-                    width="400px">
+            <div class="col-md-5">
+                <img [src]="data.image ? data.image.original : '/assets/images/no-image.png' " class="img-size">
             </div>
-            <div class="col-6 p-t-20">
+            <div class="col-md-6 p-t-20">
                 <h3>{{data.name}}</h3>
                 <div class="d-flex">
                     <h5>{{data.language}}</h5>&nbsp;|&nbsp;<h5>{{data.runtime}}&nbsp;minutes</h5>
@@ -21,7 +26,7 @@
                 <h6 [innerHTML]="data.summary" class="desc-content"></h6>
                 <h6>Show Status: {{data.status}}</h6>
             </div>
-            <div class="col-1"></div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 </div>

@@ -5,19 +5,23 @@ import {
 } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TvshowsDashboardComponent } from './tvshows-dashboard/tvshows-dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ShowListComponent } from './show-list/show-list.component';
 import { ShowDetailComponent } from './show-detail/show-detail.component';
+import { ShowListTemplateComponent } from './show-list-template/show-list-template.component';
 import { HeaderComponent } from './header/header.component';
+import { ShowCategoryComponent } from './show-category/show-category.component';
+import { ShowSearchComponent } from './show-search/show-search.component';
+import { AllShowsComponent } from './all-shows/all-shows.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TvshowsDashboardComponent,
-    ShowListComponent,
     ShowDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    ShowListTemplateComponent,
+    ShowCategoryComponent,
+    AllShowsComponent,
+    ShowSearchComponent
   ],
   imports: [
     BrowserModule,

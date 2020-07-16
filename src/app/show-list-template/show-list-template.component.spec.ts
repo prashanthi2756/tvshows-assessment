@@ -1,15 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
-import { ShowListComponent } from './show-list.component';
+import { ShowListTemplateComponent } from './show-list-template.component';
 
-describe('ShowListComponent', () => {
-  let component: ShowListComponent;
-  let fixture: ComponentFixture<ShowListComponent>;
+describe('ShowListTemplateComponent', () => {
+  let component: ShowListTemplateComponent;
+  let fixture: ComponentFixture<ShowListTemplateComponent>;
 
    beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShowListComponent ],
+      declarations: [ ShowListTemplateComponent ],
       imports: [ HttpClientTestingModule ],
       providers: [HttpClient]
     })
@@ -18,7 +18,7 @@ describe('ShowListComponent', () => {
 
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShowListComponent);
+    fixture = TestBed.createComponent(ShowListTemplateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     component.start = 0;

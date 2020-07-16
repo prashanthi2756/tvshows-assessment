@@ -1,8 +1,8 @@
 <div>
-    <div class="row">
+    <div class="row" *ngIf="!allShows">
         <div class="col-6">
             <h6 class="show-title">
-                {{genre ? genre : 'Search results related to : ' + searchInput }}
+                {{genre }}
             </h6>
         </div>
         <div class="col-4"></div>
@@ -17,7 +17,7 @@
     </div>
     <div class="d-flex flex-wrap clear">
         <h6 class="show-results" *ngIf="showsData.length == 0">No results found</h6>
-        <div class="p-2 item" *ngFor="let item of showsData | slice:start:end;">
+        <div class="p-2 item" *ngFor="let item of showsData | slice:start:!allShows ? end : showsData.length;">
             <div class="card custom">
                 <img [src]="item.image ? item.image.medium : '/assets/images/no-image.png'" height="290">
                 <div class="card-body-custom">
