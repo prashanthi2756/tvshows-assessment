@@ -1,19 +1,6 @@
-
-.has-search .form-control {
-    padding-left: 2.375rem;
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
 }
-
-.has-search .form-control-feedback {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    width: 2.375rem;
-    height: 2.375rem;
-    line-height: 2.375rem;
-    text-align: center;
-    pointer-events: none;
-    color: #aaa;
-}
-.form-group.has-search {
-    padding-right: 100px;
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #fff;
 }

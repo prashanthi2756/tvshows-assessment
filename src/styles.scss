@@ -1,14 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
-$themecolor: #0e5384 ;
-.bg-color {
-    background-color: $themecolor;
+$theme-nav: #0e5384;
+$theme-text: #fff;
+$theme-bg: #041b2b ;
+$theme-border: rgba(247, 245, 245, 0.1);
+.nav-bg {
+    background-color: $theme-nav;
 }
 .breadcrumb.custom {
     background-color: inherit;
     font-size: 18px;
     .breadcrumb-item.active {
-        color: #fff;
+        color: $theme-text;
     }
 }
+.bg-content {
+    background-color: $theme-bg;
+    padding: 40px;
+    padding-top: 80px;
+    min-height: 760px;;
+}
+  .footer {
+    background-color: $theme-bg;
+    border-top: 1px solid #fff;
+    color: $theme-text;
+      .container {
+        width: auto;
+        max-width: 680px;
+        padding: 0 15px;
+      }
+  }

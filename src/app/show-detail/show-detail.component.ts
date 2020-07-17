@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TvshowsService } from '../tvshows.service';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-show-detail',
@@ -13,7 +13,8 @@ export class ShowDetailComponent implements OnInit {
   id: any;
   constructor(
     private route: ActivatedRoute,
-    private tvshowsService: TvshowsService
+    private tvshowsService: TvshowsService,
+    private location: Location
 
   ) { }
 
@@ -28,5 +29,8 @@ export class ShowDetailComponent implements OnInit {
       (data) => {
         this.data = data;
       });
+  }
+  public naviagteToPreviousPage(): void {
+    this.location.back();
   }
 }

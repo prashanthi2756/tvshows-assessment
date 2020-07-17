@@ -1,11 +1,19 @@
-<div class="bg-detail-content" *ngIf="data">
+<div class="bg-content" *ngIf="data">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb custom">
             <li class="breadcrumb-item"><a routerLink="">Home (All Shows)</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{data.name}}</li>
         </ol>
     </nav>
+  
     <div class="container">
+        <div class="p-b-20">
+            <button class="btn btn-back"
+                    (click)="naviagteToPreviousPage()">
+              <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;
+              Back
+            </button>
+        </div>
         <div class="row">
             <div class="col-md-5">
                 <img [src]="data.image ? data.image.original : '/assets/images/no-image.png' " class="img-size">
@@ -23,6 +31,7 @@
                 <h6><span class="caption">Premiered:</span> {{data.premiered | date:'MMM d, y'}}</h6>
                 <h6><span class="caption">Scheduled:</span> {{data.schedule.days.join(', ')}} at
                     {{data.schedule.time}}</h6>
+                <h6>Show Type: {{data.type}}</h6>
                 <h6 [innerHTML]="data.summary" class="desc-content"></h6>
                 <h6>Show Status: {{data.status}}</h6>
             </div>

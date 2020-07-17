@@ -1,10 +1,16 @@
-.bg-detail-content {
-    background-color: #041b2b;
-    padding: 40px;
-    padding-top: 80px;
-    color: #fff;
+@import "../../styles.scss";
+.bg-content {
+    color: $theme-text;
     .p-t-20 {
         padding-top: 20px;
+    }
+    .p-b-20 {
+        padding-bottom: 20px;
+    }
+    .btn.btn-back {
+        background-color: $theme-nav;
+        border: 1px solid $theme-text;
+        color: $theme-text;
     }
     .icon-color {
         color: yellow;
@@ -25,3 +31,4 @@
         }
     }
 }
+

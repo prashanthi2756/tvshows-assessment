@@ -1,11 +1,13 @@
+@import "../../styles.scss";
+
 .show-title {
-    color: #fff;
+    color: $theme-text;
     font-size: 1.2em;
     float: left;
     padding-left: 10px;
 }
 .show-results {
-    color: #fff;
+    color: $theme-text;
     font-size: 1em;
     float: left;
     padding: 10px;
@@ -36,6 +38,9 @@
             float: left;
             font-size: 0.9rem;
             cursor: pointer;
+        }
+        .card-title:hover {
+            text-decoration: underline;
         }
         .caption {
             float: right;
