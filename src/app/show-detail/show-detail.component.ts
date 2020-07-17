@@ -28,7 +28,7 @@ export class ShowDetailComponent implements OnInit {
     this.tvshowsService.getShowDetail(this.id).subscribe(
       (data) => {
         this.data = data;
-      });
+    });
   }
   public naviagteToPreviousPage(): void {
     this.location.back();

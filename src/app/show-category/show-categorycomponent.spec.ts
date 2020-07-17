@@ -44,9 +44,8 @@ describe('ShowCategoryComponent', () => {
     component.loadData();
     expect(component.data.length).toEqual(5);
     component.genreData();
-    expect(component.showsDataDrama.length).toBe(5);
-    expect(component.showsDataComedy.length).toBe(5);
-    expect(component.showsDataSports.length).toBe(5);
+    expect(typeof(component.showsDataCategory)).toBe('object');
+    expect(component.categoryKeys.length).toBe(1);
   });
   it('should return data when show status value is not empty', () => {
     spyOn(TvshowsService.prototype, 'getShowList').and.returnValue(of(JSON.parse(testData)));
@@ -64,6 +63,5 @@ describe('ShowCategoryComponent', () => {
     component.genreData();
     expect(component.allShowsData.length).toEqual(5);
   });
-
 
 });

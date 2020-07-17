@@ -6,7 +6,8 @@ import {
   FormBuilder
 } from '@angular/forms';
 import { ShowSearchService } from '../show-search.service';
-
+import { orderBy, groupBy } from 'lodash';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-show-category',
   templateUrl: './show-category.component.html',
@@ -16,10 +17,9 @@ export class ShowCategoryComponent implements OnInit {
   @Input() allShows;
   data: any = [];
   allShowsData: any = [];
-  showsDataDrama: any = [];
-  showsDataSports: any = [];
-  showsDataComedy: any = [];
+  showsDataCategory: any = [];
   searchResults: any = [];
+  categoryKeys: any = [];
   searchInput: string;
   showStatus: string;
   showRating: string;
@@ -45,11 +45,10 @@ export class ShowCategoryComponent implements OnInit {
     this.loadData();
   }
   loadData() {
-    this.tvshowsService.getShowList().subscribe((data: any) => {
+    this.tvshowsService.getShowList().subscribe((data: any[]) => {
       this.data = data;
-      this.showsDataDrama = this.data.filter(item => item.genres.indexOf('Drama') >= 0);
-      this.showsDataComedy = this.data.filter(item => item.genres.indexOf('Comedy') >= 0);
-      this.showsDataSports = this.data.filter(item => item.genres.indexOf('Sports') >= 0);
+      this.showsDataCategory = groupBy(orderBy(data, 'rating.average', 'desc'), 'genres');
+      this.categoryKeys = Object.keys(this.showsDataCategory);
       this.genreData();
     });
   }

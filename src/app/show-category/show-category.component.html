@@ -47,11 +47,9 @@
     <app-show-list-template [searchResults]="allShowsData" [allShows]="allShows"></app-show-list-template>
   </ng-container>
   <ng-container *ngIf="!allShows">
-    <app-show-list-template [genreInput]="'Drama'" [searchResults]="showsDataDrama"></app-show-list-template>
-    <hr class="border-color">
-    <app-show-list-template [genreInput]="'Comedy'" [searchResults]="showsDataComedy"></app-show-list-template>
-    <hr class="border-color">
-    <app-show-list-template [genreInput]="'Sports'" [searchResults]="showsDataSports"></app-show-list-template>
-    <hr class="border-color">
+    <div *ngFor="let key of categoryKeys">
+        <app-show-list-template [genreInput]="key" [searchResults]="showsDataCategory[key]"></app-show-list-template>
+        <hr class="border-color">
+    </div>
   </ng-container>
 </div>

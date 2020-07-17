@@ -21,13 +21,16 @@ $theme-border: rgba(247, 245, 245, 0.1);
     padding-top: 80px;
     min-height: 760px;;
 }
-  .footer {
-    background-color: $theme-bg;
-    border-top: 1px solid #fff;
-    color: $theme-text;
-      .container {
-        width: auto;
-        max-width: 680px;
-        padding: 0 15px;
-      }
+.footer {
+background-color: $theme-bg;
+border-top: 1px solid #fff;
+color: $theme-text;
+  .container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
   }
+}
+.hover {
+cursor: pointer;
+}

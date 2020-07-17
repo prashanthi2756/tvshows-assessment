@@ -16,5 +16,6 @@ export class HeaderComponent implements OnInit {
   search(val: any) {
     this.shows.getSearchResults(val);
     this.router.navigate(['show-search']);
+    this.searchValue = '';
   }
 }

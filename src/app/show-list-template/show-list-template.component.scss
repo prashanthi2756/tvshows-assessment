@@ -2,7 +2,7 @@
 
 .show-title {
     color: $theme-text;
-    font-size: 1.2em;
+    font-size: 1.1em;
     float: left;
     padding-left: 10px;
 }
@@ -35,16 +35,16 @@
         padding-left: 2px;
         padding-right: 2px;
         .card-title {
-            float: left;
             font-size: 0.9rem;
             cursor: pointer;
+            margin-bottom: 3px;
         }
         .card-title:hover {
             text-decoration: underline;
         }
         .caption {
-            float: right;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            line-height: 1;
         }
     }
    

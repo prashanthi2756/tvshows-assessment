@@ -17,8 +17,8 @@
         <div class="p-b-20" *ngFor="let item of searchResults ">
             <div class="row">
                 <div class="col-md-2">
-                    <a  [routerLink]="['/show-details', item.id]"><img [src]="item.image ? item.image.medium : '/assets/images/no-image.png'" height="220"
-                        width="150"></a>
+                    <a  [routerLink]="['/show-details', item.id]" ><img [src]="item.image ? item.image.medium : '/assets/images/no-image.png'" height="220"
+                        width="150" class="hover"></a>
                 </div>
                 <div class="col-md-8">
                     <h4><a class="card-title" [routerLink]="['/show-details', item.id]">{{item.name}}</a></h4>
