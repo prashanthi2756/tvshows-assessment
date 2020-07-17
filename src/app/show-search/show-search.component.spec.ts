@@ -1,14 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ShowSearchService } from '../show-search.service';
 import { ShowSearchComponent } from './show-search.component';
+import { HttpClientTestingModule, } from '@angular/common/http/testing';
 
-xdescribe('ShowSearchComponent', () => {
+describe('ShowSearchComponent', () => {
   let component: ShowSearchComponent;
   let fixture: ComponentFixture<ShowSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShowSearchComponent ]
+      declarations: [ ShowSearchComponent ],
+      imports: [ HttpClientTestingModule],
+      providers: [ShowSearchService]
     })
     .compileComponents();
   }));

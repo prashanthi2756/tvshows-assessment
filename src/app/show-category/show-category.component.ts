@@ -14,12 +14,12 @@ import { ShowSearchService } from '../show-search.service';
 })
 export class ShowCategoryComponent implements OnInit {
   @Input() allShows;
-  data: any[] = [];
-  allShowsData: any[] = [];
-  showsDataDrama: any[] = [];
-  showsDataSports: any[] = [];
-  showsDataComedy: any[] = [];
-  searchResults: any[] = [];
+  data: any = [];
+  allShowsData: any = [];
+  showsDataDrama: any = [];
+  showsDataSports: any = [];
+  showsDataComedy: any = [];
+  searchResults: any = [];
   searchInput: string;
   showStatus: string;
   showRating: string;

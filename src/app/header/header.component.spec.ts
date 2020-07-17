@@ -41,8 +41,4 @@ describe('HeaderComponent', () => {
     component.search('drama');
     expect(publicComponent.router.navigate).toHaveBeenCalledWith(['show-search']);
   });
-  // it('should call search results', inject([ShowSearchService, Router], (service: ShowSearchService)  => {
-  //   spyOn(service, 'getSearchResults');
-  //   component.search('drama');
-  // }));
 });

@@ -9,18 +9,15 @@ export class ShowListTemplateComponent implements OnInit {
   @Input() searchResults: any[];
   @Input() allShows;
   @Input() genreInput: string;
-  start: number;
-  maxItems: number;
-  end: number;
+  start = 0;
+  maxItems = 5;
+  end = this.maxItems;
   genre: string;
   searchText: string;
   showsData: any[] = [];
   constructor() { }
 
   ngOnInit(): void {
-    this.start = 0;
-    this.maxItems = !this.allShows ? 5 : 0;
-    this.end = this.maxItems;
   }
   ngOnChanges() {
     this.genre = this.genreInput;
@@ -37,11 +34,13 @@ export class ShowListTemplateComponent implements OnInit {
     }
   }
   next() {
-    this.start += this.maxItems;
-    this.end += this.maxItems;
+ 
     if (this.end >= this.showsData.length) {
       this.start = this.showsData.length - (this.maxItems + 1);
       this.end = this.showsData.length - 1;
+    } else {
+       this.start += this.maxItems;
+       this.end += this.maxItems;
     }
   }
 }

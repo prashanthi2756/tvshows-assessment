@@ -29,4 +29,9 @@ describe('ShowSearchService', () => {
     service.getSearchResults('drama');
     expect(typeof(service.showResults)).toBe('object');
   }));
+   it('should define search results on empty search text',inject([TvshowsService, HttpClient], (showService: TvshowsService, http: HttpClient) => {
+    spyOn(showService, 'showSearch').and.returnValue(of(JSON.parse(testData)))
+    service.getSearchResults('');
+    expect(typeof(service.showResults)).toBe('object');
+  }));
 });
