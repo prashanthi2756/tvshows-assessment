@@ -15,13 +15,13 @@ Run 'npm install -g @angular/cli'
 
 ## Project Setup 
 
-# clone repository
+## clone repository
 git clone https://github.com/prashanthi2756/tvshows-assessment
 
-# Navigate to project folder
+## Navigate to project folder
 cd tvshow-assessment
 
-# install dependencies
+## Install dependencies
 
 ``` bash
 Run `npm install` 
