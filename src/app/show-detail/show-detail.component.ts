@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TvshowsService } from '../tvshows.service';
+import { TvshowsService } from '../services/tvshows.service';
 import { Location } from '@angular/common';
 
 @Component({

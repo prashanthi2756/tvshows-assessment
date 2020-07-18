@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TvshowsService } from '../tvshows.service';
+import { TvshowsService } from '../services/tvshows.service';
 import {
   FormControl,
   FormGroup,
   FormBuilder
 } from '@angular/forms';
-import { ShowSearchService } from '../show-search.service';
+import { ShowSearchService } from '../services/show-search.service';
 import { orderBy, groupBy } from 'lodash';
 import { map } from 'rxjs/operators';
 @Component({

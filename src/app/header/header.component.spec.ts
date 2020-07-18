@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
-import { ShowSearchService } from '../show-search.service';
+import { ShowSearchService } from '../services/show-search.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
