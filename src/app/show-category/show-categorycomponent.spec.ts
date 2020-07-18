@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { ShowCategoryComponent } from './show-category.component';
 import { TvshowsService } from '../tvshows.service';
 import { FormBuilder } from '@angular/forms';
@@ -47,7 +47,7 @@ describe('ShowCategoryComponent', () => {
     expect(typeof(component.showsDataCategory)).toBe('object');
     expect(component.categoryKeys.length).toBe(1);
   });
-  it('should return data when show status value is not empty', () => {
+  it('should return data when show status input value is not empty', () => {
     spyOn(TvshowsService.prototype, 'getShowList').and.returnValue(of(JSON.parse(testData)));
     component.showsForm.controls['showStatus'].setValue('Running');
     component.loadData();
@@ -55,7 +55,7 @@ describe('ShowCategoryComponent', () => {
     component.genreData();
     expect(component.allShowsData.length).toEqual(3);
   });
-    it('should return data when show status value is  empty', () => {
+    it('should return data when show status input value is empty', () => {
     spyOn(TvshowsService.prototype, 'getShowList').and.returnValue(of(JSON.parse(testData)));
     component.showsForm.controls['showStatus'].setValue('');
     component.loadData();
@@ -63,5 +63,22 @@ describe('ShowCategoryComponent', () => {
     component.genreData();
     expect(component.allShowsData.length).toEqual(5);
   });
-
+  it('should sort all shows data by order A-Z ', () => {
+    spyOn(component.allShowsData, 'sort');
+    spyOn(TvshowsService.prototype, 'getShowList').and.returnValue(of(JSON.parse(testData)));
+    component.showsForm.controls['sortBy'].setValue('A-Z');
+    component.loadData();
+    spyOn(component, 'genreData');
+    component.genreData();
+    expect(component.allShowsData.length).toEqual(5);
+  });
+ it('should sort all shows data by order Z-A', () => {
+    spyOn(component.allShowsData, 'sort');
+    spyOn(TvshowsService.prototype, 'getShowList').and.returnValue(of(JSON.parse(testData)));
+    component.showsForm.controls['sortBy'].setValue('Z-A');
+    component.loadData();
+    spyOn(component, 'genreData');
+    component.genreData();
+    expect(component.allShowsData.length).toEqual(5);
+  });
 });

@@ -31,7 +31,7 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
   it('searching for tv shows', () => {
-    spyOn(publicComponent.shows, 'getSearchResults').and.callThrough();
+    spyOn(publicComponent.showSearchService, 'getSearchResults').and.callThrough();
     component.search('drama');
   });
 

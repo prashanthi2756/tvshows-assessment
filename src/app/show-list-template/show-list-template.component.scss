@@ -13,14 +13,14 @@
     padding: 10px;
 }
 .prev-button {
-    color: #fff;
+    color: $theme-text;
     padding-right: 40px;
     cursor: pointer;
     background-color: inherit;
     border: none;
 }
 .next-button {
-    color: #fff;
+    color: $theme-text;
     background-color: inherit;
     border: none;
     cursor: pointer;

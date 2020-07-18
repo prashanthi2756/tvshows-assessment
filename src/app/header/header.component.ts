@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   searchValue:string;
-  constructor(private shows: ShowSearchService,private router :Router) { }
+  constructor(private showSearchService: ShowSearchService,private router :Router) { }
 
   ngOnInit(): void {
   }
   search(val: any) {
-    this.shows.getSearchResults(val);
+    this.showSearchService.getSearchResults(val);
     this.router.navigate(['show-search']);
     this.searchValue = '';
   }

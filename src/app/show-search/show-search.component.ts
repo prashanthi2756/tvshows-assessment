@@ -7,7 +7,7 @@ import { ShowSearchService } from '../show-search.service';
   styleUrls: ['./show-search.component.scss']
 })
 export class ShowSearchComponent implements OnInit {
-
+    
   searchResults:string;
   searchTitle: string;
   constructor(private showSearchService: ShowSearchService) { }

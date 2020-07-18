@@ -24,14 +24,14 @@ describe('ShowSearchService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  it('should define search results',inject([TvshowsService, HttpClient], (showService: TvshowsService, http: HttpClient) => {
-    spyOn(showService, 'showSearch').and.returnValue(of(JSON.parse(testData)))
+  it('should define search results', () => {
+    spyOn(TvshowsService.prototype, 'showSearch').and.returnValue(of(JSON.parse(testData)))
     service.getSearchResults('drama');
     expect(typeof(service.showResults)).toBe('object');
-  }));
-   it('should define search results on empty search text',inject([TvshowsService, HttpClient], (showService: TvshowsService, http: HttpClient) => {
-    spyOn(showService, 'showSearch').and.returnValue(of(JSON.parse(testData)))
+  });
+   it('should define search results on empty search text', () => {
+    spyOn(TvshowsService.prototype, 'showSearch').and.returnValue(of(JSON.parse(testData)))
     service.getSearchResults('');
     expect(typeof(service.showResults)).toBe('object');
-  }));
+  });
 });

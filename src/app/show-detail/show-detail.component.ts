@@ -30,7 +30,7 @@ export class ShowDetailComponent implements OnInit {
         this.data = data;
     });
   }
-  public naviagteToPreviousPage(): void {
+  naviagteToPreviousPage() {
     this.location.back();
   }
 }
