@@ -5,14 +5,14 @@ import {
 } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ShowDetailComponent } from './show-detail/show-detail.component';
 import { ShowListTemplateComponent } from './show-list-template/show-list-template.component';
 import { HeaderComponent } from './header/header.component';
 import { ShowCategoryComponent } from './show-category/show-category.component';
 import { ShowSearchComponent } from './show-search/show-search.component';
 import { AllShowsComponent } from './all-shows/all-shows.component';
-
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,10 @@ import { AllShowsComponent } from './all-shows/all-shows.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    HttpClientModule,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

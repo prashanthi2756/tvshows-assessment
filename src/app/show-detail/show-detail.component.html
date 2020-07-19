@@ -1,12 +1,12 @@
-<div class="bg-content" *ngIf="data">
+<div class="bg-content">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb custom">
             <li class="breadcrumb-item"><a routerLink="">Home (All Shows)</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{data.name}}</li>
+            <li class="breadcrumb-item active" aria-current="page"  *ngIf="data">{{data.name}}</li>
         </ol>
     </nav>
   
-    <div class="container">
+    <div class="container" *ngIf="data">
         <div class="p-b-20">
             <button class="btn btn-back"
                     (click)="naviagteToPreviousPage()">
