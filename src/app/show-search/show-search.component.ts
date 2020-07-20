@@ -7,18 +7,17 @@ import { ShowSearchService } from '../services/show-search.service';
   styleUrls: ['./show-search.component.scss']
 })
 export class ShowSearchComponent implements OnInit {
-    
-  searchResults:string;
+  searchResults: any[];
   searchTitle: string;
   constructor(private showSearchService: ShowSearchService) { }
 
   ngOnInit(): void {
-    this.showSearchService.showsData.subscribe( (data: any) => {
-      this.searchResults = data
-    })
-    this.showSearchService.searchInput.subscribe( (data: any) => {
-      this.searchTitle = data
-    })
+    this.showSearchService.showsData.subscribe((data: any) => {
+      this.searchResults = data;
+    });
+    this.showSearchService.searchInput.subscribe((data: any) => {
+      this.searchTitle = data;
+    });
   }
 
 }

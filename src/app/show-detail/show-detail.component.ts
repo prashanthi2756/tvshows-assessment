@@ -24,13 +24,13 @@ export class ShowDetailComponent implements OnInit {
     });
     this.loadData();
   }
-  loadData() {
+  public loadData(): void {
     this.tvshowsService.getShowDetail(this.id).subscribe(
       (data) => {
         this.data = data;
-    });
+      });
   }
-  naviagteToPreviousPage() {
+  public naviagteToPreviousPage(): void {
     this.location.back();
   }
 }

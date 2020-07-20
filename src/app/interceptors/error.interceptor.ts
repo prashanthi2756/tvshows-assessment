@@ -6,7 +6,7 @@ import { Observable, throwError } from 'rxjs';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor() { }
   // Intercept HTTP Requests and Responses and call ErrorHandler callback incase of any Error
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
@@ -14,7 +14,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     );
   }
   // Handle HttpError and format error message before sending error response
-  errorHandler(error: HttpErrorResponse) {
+  errorHandler(error: HttpErrorResponse): Observable<any> {
     const errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     return throwError(errorMessage);
   }

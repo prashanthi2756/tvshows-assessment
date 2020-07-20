@@ -5,9 +5,7 @@ import {
   FormGroup,
   FormBuilder
 } from '@angular/forms';
-import { ShowSearchService } from '../services/show-search.service';
 import { orderBy, groupBy } from 'lodash';
-import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-show-category',
   templateUrl: './show-category.component.html',
@@ -31,12 +29,11 @@ export class ShowCategoryComponent implements OnInit {
   });
   constructor(
     private tvshowsService: TvshowsService,
-    private showSearchService: ShowSearchService,
     private fb: FormBuilder,
 
   ) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.showsForm = this.fb.group({
       showStatus: '',
       showRating: '',
@@ -44,7 +41,7 @@ export class ShowCategoryComponent implements OnInit {
     });
     this.loadData();
   }
-  loadData() {
+  public loadData(): void {
     this.tvshowsService.getShowList().subscribe((data: any[]) => {
       this.data = data;
       this.showsDataCategory = groupBy(orderBy(data, 'rating.average', 'desc'), 'genres');
@@ -52,11 +49,15 @@ export class ShowCategoryComponent implements OnInit {
       this.genreData();
     });
   }
-  genreData() {
-    this.showStatus = this.showsForm.controls['showStatus'].value;
-    this.showRating = this.showsForm.controls['showRating'].value;
-    this.sortBy = this.showsForm.controls['sortBy'].value;
-    this.allShowsData = this.data.filter(item => (this.showStatus  ? (item.status === this.showStatus  && item.rating.average >= this.showRating) : item.rating.average >= this.showRating ));
-    this.allShowsData = this.allShowsData.sort((a, b) => (this.sortBy === 'A-Z' ? ((a.name > b.name) ? 1 : -1) : ((b.name > a.name) ? 1 : -1)));
+  public genreData(): void {
+    this.showStatus = this.showsForm.controls.showStatus.value;
+    this.showRating = this.showsForm.controls.showRating.value;
+    this.sortBy = this.showsForm.controls.sortBy.value;
+    this.allShowsData = this.data.filter(item =>
+      (this.showStatus ? (item.status === this.showStatus && item.rating.average >= this.showRating)
+        : item.rating.average >= this.showRating));
+    this.allShowsData = this.allShowsData.sort((a, b) =>
+      (this.sortBy === 'A-Z' ? ((a.name > b.name) ? 1 : -1) :
+        ((b.name > a.name) ? 1 : -1)));
   }
 }

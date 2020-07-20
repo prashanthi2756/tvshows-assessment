@@ -5,14 +5,14 @@
             <li class="breadcrumb-item active" aria-current="page">Search</li>
         </ol>
     </nav>
-    <div *ngIf="searchResults.length == 0">
+    <div *ngIf="!searchResults.length">
         <div class="card card-warning">
             <span> <i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;&nbsp;No Shows, People found for
                 your query. Please make a new request by searching in header to view the show you are looking for.
             </span>
         </div>
     </div>
-    <div class="container" *ngIf="searchResults.length > 0">
+    <div class="container" *ngIf="searchResults.length">
         <h6 class="search-title">{{'Search results related to : ' + searchTitle}}</h6>
         <div class="p-b-20" *ngFor="let item of searchResults ">
             <div class="row">

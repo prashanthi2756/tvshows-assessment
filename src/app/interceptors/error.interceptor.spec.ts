@@ -9,12 +9,12 @@ describe('ErrorInterceptor', () => {
   let service: HttpApiService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientModule ],
+      imports: [HttpClientModule],
       providers: [
         ErrorInterceptor,
         HttpApiService,
         HttpClient,
-        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
       ]
     });
     interceptor = TestBed.inject(ErrorInterceptor);
@@ -27,9 +27,9 @@ describe('ErrorInterceptor', () => {
 
   it('should update errorMessage with error code when there is error in Http Request / Response', () => {
     service.get('http://api.tvmaze.com/search/shows?page=1').subscribe(
-    () => {},
-    (error) => {
-      expect(error).toContain('Error Code');
-    });
+      () => { },
+      (error) => {
+        expect(error).toContain('Error Code');
+      });
   });
 });

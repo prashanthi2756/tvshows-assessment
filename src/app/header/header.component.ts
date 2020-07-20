@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  searchValue:string;
-  constructor(private showSearchService: ShowSearchService,private router :Router) { }
+  searchValue: string;
+  constructor(private showSearchService: ShowSearchService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  search(val: any) {
+  public search(val: any): void {
     this.showSearchService.getSearchResults(val);
     this.router.navigate(['show-search']);
     this.searchValue = '';
