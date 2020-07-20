@@ -36,7 +36,7 @@ describe('HeaderComponent', () => {
   });
 
 
-  it('user should naviagte to details pages when selected the search item', () => {
+  it('should navigate to search results page after search', () => {
     spyOn(publicComponent.router, 'navigate').and.returnValue(true);
     component.search('drama');
     expect(publicComponent.router.navigate).toHaveBeenCalledWith(['show-search']);

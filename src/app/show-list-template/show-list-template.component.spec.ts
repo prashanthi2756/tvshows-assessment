@@ -44,19 +44,19 @@ describe('ShowListTemplateComponent', () => {
     component.ngOnChanges();
     expect(component.showsData.length).toEqual(1);
   });
-   it('Calling Prev Method on start is less than 0', () => {
+   it('should call Prev Method and set start to 0, when start is less than 0', () => {
     component.showsData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     component.start = -5;
     component.prev();
     expect(component.start).toEqual(0);
     expect(component.end).toEqual(5);
   });
-  it('Calling Next method should increment start value and end value by 5', () => {
+  it('should call Next method should increment start value and end value by 5', () => {
     component.showsData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     component.next();
     expect(component.start).toEqual(5);
   });
-   it('Calling Next method equals or beyond available data should reset end value to max length', () => {
+   it('should call Next method equals or beyond available data should reset end value to max length', () => {
     component.showsData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     component.start = 5;
     component.end = 10;
@@ -64,7 +64,7 @@ describe('ShowListTemplateComponent', () => {
     expect(component.start).toEqual(4);
     expect(component.end).toEqual(9);
   });
- it('Calling Next method when end is less than max data', () => {
+ it('should call Next method when end is less than max data', () => {
     component.showsData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     component.start = 0;
     component.end = 5;
@@ -72,7 +72,7 @@ describe('ShowListTemplateComponent', () => {
     expect(component.start).toEqual(5);
     expect(component.end).toEqual(10);
   });
-  it('Calling Prev method should decrement start value and end value by 5', () => {
+  it('should call Prev method and should decrement start value and end value by 5', () => {
     component.showsData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     component.start = 5;
     component.end = 10;
@@ -80,6 +80,4 @@ describe('ShowListTemplateComponent', () => {
     expect(component.start).toEqual(0);
     expect(component.end).toEqual(5);
   });
-
-
 });
