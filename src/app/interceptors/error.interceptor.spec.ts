@@ -1,35 +1,35 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { ErrorInterceptor } from './error.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpService } from '../services/http.service';
+import { HttpApiService } from '../services/http-api.service';
 import { HttpClient } from '@angular/common/http';
 
 describe('ErrorInterceptor', () => {
   let interceptor: ErrorInterceptor;
-  let service: HttpService;
+  let service: HttpApiService;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientModule ],
       providers: [
         ErrorInterceptor,
-        HttpService,
+        HttpApiService,
         HttpClient,
         {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
       ]
     });
     interceptor = TestBed.inject(ErrorInterceptor);
-    service = TestBed.inject(HttpService);
+    service = TestBed.inject(HttpApiService);
   });
 
   it('should be created', () => {
     expect(interceptor).toBeTruthy();
   });
 
-  it('should update errorMessage with error code when there is error in Http Request / Response', async(() => {
+  it('should update errorMessage with error code when there is error in Http Request / Response', () => {
     service.get('http://api.tvmaze.com/search/shows?page=1').subscribe(
     () => {},
     (error) => {
       expect(error).toContain('Error Code');
     });
-  }));
+  });
 });
