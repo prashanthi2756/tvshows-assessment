@@ -13,17 +13,17 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
-      imports: [ HttpClientTestingModule,RouterTestingModule ],
+      declarations: [HeaderComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule],
 
       providers: [ShowSearchService, HttpClient]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
-    publicComponent = component =  fixture.componentInstance;
+    publicComponent = component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
