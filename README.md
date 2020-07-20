@@ -37,7 +37,7 @@ open any browser and navigate to http://localhost:4200 to see the application
 ## To Run Unit Tests
 
 ``` bash
-Run `ng serve` to execute the unit tests 
+Run `ng test` to execute the unit tests 
 ```
 ## Project Guidelines
 
