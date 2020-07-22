@@ -1,10 +1,10 @@
 <div class="bg-content">
   <form [formGroup]="showsForm">
     <div class="row" *ngIf="allShows">
-      <div class="col-md-5">
+      <div class="col-md-3">
         <h5 class="header-title"> Watch Series Online</h5>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="form-group">
           <select class="form-control custom" formControlName="showStatus" (change)="genreData()">
             <option value="">Show Status</option>
@@ -14,22 +14,15 @@
           </select>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="form-group">
           <select class="form-control custom" formControlName="showRating" (change)="genreData()">
             <option value=''>Rating</option>
-            <option value="9">9+</option>
-            <option value="8">8+</option>
-            <option value="7">7+</option>
-            <option value="6">6+</option>
-            <option value="5">5+</option>
-            <option value="4">4+</option>
-            <option value="3">3+</option>
-            <option value="2">2+</option>
+            <option *ngFor="let item of ratingArray" [value]="item">{{item}}+</option>
           </select>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="form-group">
           <select class="form-control custom" formControlName="sortBy" (change)="genreData()">
             <option value="">Sort by</option>
@@ -37,8 +30,6 @@
             <option value="Z-A">Z-A</option>
           </select>
         </div>
-      </div>
-      <div class="col-md-1">
       </div>
     </div>
   </form>
@@ -48,8 +39,8 @@
   </ng-container>
   <ng-container *ngIf="!allShows">
     <div *ngFor="let key of categoryKeys">
-        <app-show-list-template [genreInput]="key" [searchResults]="showsDataCategory[key]"></app-show-list-template>
-        <hr class="border-color">
+      <app-show-list-template [genreInput]="key" [searchResults]="showsDataCategory[key]"></app-show-list-template>
+      <hr class="border-color">
     </div>
   </ng-container>
 </div>

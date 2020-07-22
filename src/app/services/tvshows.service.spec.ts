@@ -1,6 +1,6 @@
 
 import { TvshowsService } from './tvshows.service';
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 describe('TvshowsService', () => {
   let service: TvshowsService;

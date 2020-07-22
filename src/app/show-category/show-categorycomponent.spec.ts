@@ -37,7 +37,7 @@ describe('ShowCategoryComponent', () => {
   it('should define ngoninit', () => {
     spyOn(component, 'loadData');
     component.ngOnInit();
-    component.loadData();
+    expect(component.loadData).toHaveBeenCalled();
   });
   it('should return data  based on genre', () => {
     spyOn(TvshowsService.prototype, 'getShowList').and.returnValue(of(JSON.parse(testData)));

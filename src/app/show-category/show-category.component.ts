@@ -5,7 +5,8 @@ import {
   FormGroup,
   FormBuilder
 } from '@angular/forms';
-import { orderBy, groupBy } from 'lodash';
+import { groupBy } from 'lodash';
+
 @Component({
   selector: 'app-show-category',
   templateUrl: './show-category.component.html',
@@ -22,6 +23,7 @@ export class ShowCategoryComponent implements OnInit {
   showStatus: string;
   showRating: string;
   sortBy: string;
+  ratingArray: any = [];
   showsForm = new FormGroup({
     showStatus: new FormControl(),
     showRating: new FormControl(),
@@ -40,11 +42,14 @@ export class ShowCategoryComponent implements OnInit {
       sortBy: ''
     });
     this.loadData();
+    for (let i = 0; i <= 7; i++) {
+      this.ratingArray.push(9 - i);
+    }
   }
   public loadData(): void {
     this.tvshowsService.getShowList().subscribe((data: any[]) => {
-      this.data = data;
-      this.showsDataCategory = groupBy(orderBy(data, 'rating.average', 'desc'), 'genres');
+      this.data = data.sort((a, b) => a.rating.average > b.rating.average ? -1 : 1);
+      this.showsDataCategory = groupBy((data), item => item.genres);
       this.categoryKeys = Object.keys(this.showsDataCategory);
       this.genreData();
     });

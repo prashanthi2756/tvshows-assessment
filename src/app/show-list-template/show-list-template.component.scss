@@ -29,8 +29,8 @@
     clear: left;
 }
 .card.custom {
-    width: 13rem;
     text-align: center;
+    width: 13em;
     .card-body-custom {
         padding-left: 2px;
         padding-right: 2px;
@@ -46,5 +46,10 @@
             font-size: 0.8rem;
             line-height: 1;
         }
+    }
+}
+@media  (max-width: 600px) {
+    .d-flex.justify {
+        justify-content: center;
     }
 }

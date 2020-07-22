@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AllShowsComponent } from './all-shows.component';
 
 describe('AllShowsComponent', () => {
@@ -8,9 +7,9 @@ describe('AllShowsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AllShowsComponent ]
+      declarations: [AllShowsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

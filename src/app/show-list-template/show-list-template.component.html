@@ -15,13 +15,13 @@
             </span>
         </div>
     </div>
-    <div class="d-flex flex-wrap clear">
+    <div class="d-flex justify flex-wrap clear">
         <h6 class="show-results" *ngIf="showsData.length == 0">No results found</h6>
         <div class="p-2 item" *ngFor="let item of showsData | slice:start:!allShows ? end : showsData.length;">
             <div class="card custom">
                 <a [routerLink]="['/show-details', item.id]"><img
                         [src]="item.image ? item.image.medium : '/assets/images/no-image.png'" height="290"
-                        class="hover"></a>
+                        class="img-fluid hover"></a>
                 <div class="card-body-custom">
                     <h6 [routerLink]="['/show-details', item.id]" class="card-title">{{item.name}}
                     </h6>

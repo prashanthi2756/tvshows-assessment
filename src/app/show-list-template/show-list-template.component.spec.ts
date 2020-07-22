@@ -33,6 +33,8 @@ describe('ShowListTemplateComponent', () => {
   });
   it('should define ngonchanges', () => {
     component.ngOnChanges();
+    expect(component.start).toBe(0);
+    expect(component.end).toBe(5);
   });
   it('should set showsData to empty array when no data received from parent for searchResults', () => {
     component.ngOnChanges();

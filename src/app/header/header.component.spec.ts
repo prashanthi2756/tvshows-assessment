@@ -1,11 +1,10 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { ShowSearchService } from '../services/show-search.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, } from '@angular/common/http/testing';
-import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let publicComponent: any;
@@ -30,13 +29,7 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('searching for tv shows', () => {
-    spyOn(publicComponent.showSearchService, 'getSearchResults').and.callThrough();
-    component.search('drama');
-  });
-
-
-  it('should navigate to search results page after search', () => {
+  it('should navigate to search results page after click on search', () => {
     spyOn(publicComponent.router, 'navigate').and.returnValue(true);
     component.search('drama');
     expect(publicComponent.router.navigate).toHaveBeenCalledWith(['show-search']);

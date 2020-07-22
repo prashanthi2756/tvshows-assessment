@@ -17,10 +17,8 @@ const routes: Routes =
     },
     { path: 'show-details/:id', component: ShowDetailComponent },
     { path: 'show-search', component: ShowSearchComponent },
-
-
     { path: '', redirectTo: 'all-shows', pathMatch: 'full' },
-    { path: '**', redirectTo: '', pathMatch: 'full' }
+    { path: '**', redirectTo: 'all-shows', pathMatch: 'full' }
   ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

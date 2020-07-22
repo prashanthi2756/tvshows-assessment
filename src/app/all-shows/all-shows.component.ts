@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./all-shows.component.scss']
 })
 export class AllShowsComponent {
-
 }
