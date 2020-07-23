@@ -13,10 +13,10 @@ export class TvshowsService {
   public getShowList(): Observable<TvShow[]> {
     return this.httpApiService.get(`/shows`);
   }
-  getShowDetail(id: number): Observable<TvShow[]> {
+  public getShowDetail(id: number): Observable<TvShow[]> {
     return this.httpApiService.get(`/shows/${id}`);
   }
-  showSearch(searchText: string): Observable<TvShow[]> {
+  public showSearch(searchText: string): Observable<TvShow[]> {
     return this.httpApiService.get(`/search/shows?q=${searchText}`);
   }
 }
