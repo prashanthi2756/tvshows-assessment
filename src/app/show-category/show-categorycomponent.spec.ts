@@ -81,4 +81,13 @@ describe('ShowCategoryComponent', () => {
     component.genreData();
     expect(component.allShowsData.length).toEqual(5);
   });
+  it('should sort all shows data order by average rating when sort input is empty', () => {
+    spyOn(component.allShowsData, 'sort');
+    spyOn(TvshowsService.prototype, 'getShowList').and.returnValue(of(JSON.parse(testData)));
+    component.showsForm.controls.sortBy.setValue('');
+    component.loadData();
+    spyOn(component, 'genreData');
+    component.genreData();
+    expect(component.allShowsData.length).toEqual(5);
+  });
 });

@@ -1,36 +1,18 @@
 export interface TvShow {
-  externals: {
-    imdb: string;
-    thetvdb: number;
-    tvrage: number;
-  };
+  externals: Externals;
   genres: string[];
   id: number;
-  image: {
-    medium: string;
-    original: string;
-  };
+  image: Image;
   language: string;
   name: string;
-  network: {
-    country: {
-      code: string;
-      name: string;
-      timezone: string;
-    },
-    id: number;
-    name: string
-  };
+  network: Network;
   officialSite: string;
   premiered: string;
   rating: {
     average: number
   };
   runtime: number;
-  schedule: {
-    days: string[],
-    time: string
-  };
+  schedule: Schedule;
   status: string;
   summary: string;
   type: string;
@@ -38,12 +20,35 @@ export interface TvShow {
   url: string;
   webChannel: string;
   weight: number;
-  links: {
-    previousepisode: {
-      href: string;
-    },
-    self: {
-      href: string;
-    }
+  links: Links;
+}
+export class Externals {
+  imdb: string;
+  thetvdb: number;
+  tvrage: number;
+}
+export class Network {
+  country: {
+    code: string;
+    name: string;
+    timezone: string;
   };
+  id: number;
+  name: string;
+}
+export class Links {
+  previousepisode: {
+    href: string;
+  };
+  self: {
+    href: string;
+  };
+}
+export class Image {
+  medium: string;
+  original: string;
+}
+export class Schedule {
+  days: string[];
+  time: string;
 }

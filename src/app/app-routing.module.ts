@@ -21,7 +21,7 @@ const routes: Routes =
     { path: '**', redirectTo: 'all-shows', pathMatch: 'full' }
   ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

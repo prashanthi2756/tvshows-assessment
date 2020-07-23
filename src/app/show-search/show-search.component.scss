@@ -53,9 +53,9 @@
         font-weight: 200;
         padding-top: 30px;
     }
-    @media  (max-width: 600px) {
-        .card-search-data {
-            padding: 5px;
-        }
+}
+@media  (max-width: 600px) {
+    .justify {
+        text-align: center;
     }
 }

@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   public search(val: any): void {
-    this.showSearchService.getSearchResults(val);
+    this.showSearchService.getSearchResults(val ? val : '');
     this.router.navigate(['show-search']);
     this.searchValue = '';
   }

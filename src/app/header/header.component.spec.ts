@@ -29,9 +29,14 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should navigate to search results page after click on search', () => {
+  it('should navigate to search results page with value, after click on search', () => {
     spyOn(publicComponent.router, 'navigate').and.returnValue(true);
     component.search('drama');
+    expect(publicComponent.router.navigate).toHaveBeenCalledWith(['show-search']);
+  });
+  it('should navigate to search results page with empty value, after click on search', () => {
+    spyOn(publicComponent.router, 'navigate').and.returnValue(true);
+    component.search('');
     expect(publicComponent.router.navigate).toHaveBeenCalledWith(['show-search']);
   });
 });

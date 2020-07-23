@@ -61,8 +61,7 @@ export class ShowCategoryComponent implements OnInit {
     this.allShowsData = this.data.filter(item =>
       (this.showStatus ? (item.status === this.showStatus && item.rating.average >= this.showRating)
         : item.rating.average >= this.showRating));
-    this.allShowsData = this.allShowsData.sort((a, b) =>
-      (this.sortBy === 'A-Z' ? ((a.name > b.name) ? 1 : -1) :
-        ((b.name > a.name) ? 1 : -1)));
+    this.allShowsData = this.allShowsData.sort((a, b) => (this.sortBy === 'A-Z' ? (a.name > b.name ? 1 : -1) : this.sortBy === 'Z-A' ?
+      (b.name > a.name ? 1 : -1) : (a.rating.average > b.rating.average ? -1 : 1)));
   }
 }

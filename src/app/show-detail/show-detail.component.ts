@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./show-detail.component.scss']
 })
 export class ShowDetailComponent implements OnInit {
-  data: any = [];
+  data: any;
   id: any;
   constructor(
     private route: ActivatedRoute,
