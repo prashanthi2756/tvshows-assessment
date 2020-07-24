@@ -1,6 +1,6 @@
 <div class="bg-content">
-  <form [formGroup]="showsForm">
-    <div class="row" *ngIf="allShows">
+  <form [formGroup]="showsForm" class="content-width">
+    <div class="d-flex flex-wrap" *ngIf="allShows">
       <div class="col-md-3">
         <h5 class="header-title"> Watch Series Online</h5>
       </div>
@@ -33,12 +33,14 @@
       </div>
     </div>
   </form>
-  <hr class="border-color">
   <ng-container *ngIf="allShows">
-    <app-show-list-template [searchResults]="allShowsData" [allShows]="allShows"></app-show-list-template>
+    <hr class="border-color">
+    <div class="content-width">
+      <app-show-list-template [searchResults]="allShowsData" [allShows]="allShows"></app-show-list-template>
+    </div>
   </ng-container>
   <ng-container *ngIf="!allShows">
-    <div *ngFor="let key of categoryKeys">
+    <div *ngFor="let key of categoryKeys" class="content-width">
       <app-show-list-template [genreInput]="key" [searchResults]="showsDataCategory[key]"></app-show-list-template>
       <hr class="border-color">
     </div>

@@ -15,7 +15,7 @@
             </span>
         </div>
     </div>
-    <div class="d-flex justify flex-wrap clear">
+    <div class="d-flex justify flex-wrap" [ngClass]="{'justify-content-center' : allShows && showsData.length > 10}">
         <h6 class="show-results" *ngIf="showsData.length == 0">No results found</h6>
         <div class="p-2 item" *ngFor="let item of showsData | slice:start:!allShows ? end : showsData.length;">
             <div class="card custom">

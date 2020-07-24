@@ -16,7 +16,6 @@ describe('ShowSearchService', () => {
       ],
     });
     service = TestBed.inject(ShowSearchService);
-
   });
 
   it('should be created', () => {

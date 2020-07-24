@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { TvshowsService } from './tvshows.service';
 import { BehaviorSubject } from 'rxjs';
+import { TvShow } from '../tv-show-interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShowSearchService {
-  showResults: any[] = [];
+  showResults: TvShow[] = [];
   Text: string;
-  public showsData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  public showsData: BehaviorSubject<TvShow[]> = new BehaviorSubject<TvShow[]>([]);
   public searchInput: BehaviorSubject<string> = new BehaviorSubject<string>('');
   constructor(private shows: TvshowsService) { }
   public getSearchResults(searchText: string): void {

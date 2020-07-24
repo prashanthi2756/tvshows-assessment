@@ -1,36 +1,38 @@
 <div class="bg-content">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb custom">
-            <li class="breadcrumb-item"><a routerLink="">Home (All Shows)</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Search</li>
-        </ol>
-    </nav>
-    <div *ngIf="!searchResults.length">
-        <div class="card card-warning">
-            <span> <i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;&nbsp;No Shows, People found for
-                your query. Please make a new request by searching in header to view the show you are looking for.
-            </span>
+    <div class="content-width">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb custom">
+                <li class="breadcrumb-item"><a routerLink="">Home (All Shows)</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Search</li>
+            </ol>
+        </nav>
+        <div *ngIf="!searchResults.length">
+            <div class="card card-warning">
+                <span> <i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;&nbsp;No Shows, People found for
+                    your query. Please make a new request by searching in header to view the show you are looking for.
+                </span>
+            </div>
         </div>
-    </div>
-    <div class="container" *ngIf="searchResults.length">
-        <h6 class="search-title">{{'Search results related to : ' + searchTitle}}</h6>
-        <div class="p-b-20" *ngFor="let item of searchResults ">
-            <div class="row">
-                <div class="col-md-2 justify">
-                    <a [routerLink]="['/show-details', item.id]"><img
-                            [src]="item.image ? item.image.medium : '/assets/images/no-image.png'" height="220"
-                            width="150" class="img-fluid hover"></a>
-                </div>
-                <div class="col-md-8">
-                    <h4 class="justify"><a class="card-title"
-                            [routerLink]="['/show-details', item.id]">{{item.name}}</a></h4>
-                    <div class="card card-search-data">
-                        <div class="d-flex">
-                            <h5>{{item.language}}&nbsp;|&nbsp;<span class="icon-color"><i class="fa fa-star"
-                                        aria-hidden="true"></i></span>
-                                {{item.rating.average ? item.rating.average : 'NA'}} / 10</h5>
+        <div *ngIf="searchResults.length">
+            <h6 class="search-title">{{'Search results related to : ' + searchTitle}}</h6>
+            <div class="p-b-20" *ngFor="let item of searchResults ">
+                <div class="row">
+                    <div class="col-md-2 justify">
+                        <a [routerLink]="['/show-details', item.id]"><img
+                                [src]="item.image ? item.image.medium : '/assets/images/no-image.png'" height="220"
+                                width="150" class="img-fluid hover"></a>
+                    </div>
+                    <div class="col-md-8">
+                        <h4 class="justify"><a class="card-title"
+                                [routerLink]="['/show-details', item.id]">{{item.name}}</a></h4>
+                        <div class="card card-search-data">
+                            <div class="d-flex">
+                                <h5>{{item.language}}&nbsp;|&nbsp;<span class="icon-color"><i class="fa fa-star"
+                                            aria-hidden="true"></i></span>
+                                    {{item.rating.average ? item.rating.average : 'NA'}} / 10</h5>
+                            </div>
+                            <h6><span class="caption">Premiered:</span> {{item.premiered | date:'MMM d, y'}}</h6>
                         </div>
-                        <h6><span class="caption">Premiered:</span> {{item.premiered | date:'MMM d, y'}}</h6>
                     </div>
                 </div>
             </div>

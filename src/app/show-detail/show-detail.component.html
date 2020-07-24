@@ -1,12 +1,11 @@
 <div class="bg-content">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb custom">
-            <li class="breadcrumb-item"><a routerLink="">Home (All Shows)</a></li>
-            <li class="breadcrumb-item active" aria-current="page" *ngIf="data">{{data.name}}</li>
-        </ol>
-    </nav>
-
-    <div class="container" *ngIf="data">
+    <div class="content-width">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb custom">
+                <li class="breadcrumb-item"><a routerLink="">Home (All Shows)</a></li>
+                <li class="breadcrumb-item active" aria-current="page" *ngIf="data">{{data.name}}</li>
+            </ol>
+        </nav>
         <div class="p-b-20">
             <button class="btn btn-back" (click)="naviagteToPreviousPage()">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;
@@ -14,7 +13,7 @@
             </button>
         </div>
         <div class="row">
-            <div class="col-md-5 p-r-40">
+            <div class="col-md-5">
                 <img class="img-fluid" [src]="data.image ? data.image.original : '/assets/images/no-image.png' ">
             </div>
             <div class="col-md-6 p-t-20">
