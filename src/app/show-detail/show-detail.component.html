@@ -1,9 +1,9 @@
 <div class="bg-content">
-    <div class="content-width">
+    <div class="content-width" *ngIf="data">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb custom">
                 <li class="breadcrumb-item"><a routerLink="">Home (All Shows)</a></li>
-                <li class="breadcrumb-item active" aria-current="page" *ngIf="data">{{data.name}}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{data.name}}</li>
             </ol>
         </nav>
         <div class="p-b-20">

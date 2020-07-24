@@ -1,21 +1,4 @@
 @import "../../styles.scss";
-.card.custom {
-    width: 13rem;
-    text-align: center;
-    .card-body-custom {
-        padding-left: 2px;
-        padding-right: 2px;
-        .card-title {
-            float: left;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-        .caption {
-            float: right;
-            font-size: 0.9rem;
-        }
-    }
-}
 .bg-content {
     .card-warning {
         margin-top: 30px;
