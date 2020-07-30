@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TvshowsService } from '../services/tvshows.service';
 import { Location } from '@angular/common';
+import { TvShow } from '../tv-show-interface';
 
 @Component({
   selector: 'app-show-detail',
@@ -9,8 +10,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./show-detail.component.scss']
 })
 export class ShowDetailComponent implements OnInit {
-  data: any;
+  data: TvShow[];
   id: any;
+  hasError = false;
+  message: string;
   constructor(
     private route: ActivatedRoute,
     private tvshowsService: TvshowsService,
@@ -28,7 +31,12 @@ export class ShowDetailComponent implements OnInit {
     this.tvshowsService.getShowDetail(this.id).subscribe(
       (data) => {
         this.data = data;
-      });
+      },
+      (error) => {
+        this.message = error.message;
+        this.hasError = true;
+      },
+    );
   }
   naviagteToPreviousPage(): void {
     this.location.back();

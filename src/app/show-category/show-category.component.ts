@@ -29,6 +29,8 @@ export class ShowCategoryComponent implements OnInit {
     showRating: new FormControl(),
     sortBy: new FormControl()
   });
+  hasError = false;
+  message: string;
   constructor(
     private tvshowsService: TvshowsService,
     private fb: FormBuilder,
@@ -52,7 +54,12 @@ export class ShowCategoryComponent implements OnInit {
       this.showsDataCategory = groupBy((data), item => item.genres);
       this.categoryKeys = Object.keys(this.showsDataCategory);
       this.genreData();
-    });
+    },
+      (error) => {
+        this.message = error.message;
+        this.hasError = true;
+      },
+    );
   }
   public genreData(): void {
     this.showStatus = this.showsForm.controls.showStatus.value;

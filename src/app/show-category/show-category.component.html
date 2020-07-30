@@ -1,48 +1,52 @@
 <div class="bg-content">
-  <form [formGroup]="showsForm" class="content-width">
-    <div class="d-flex flex-wrap" *ngIf="allShows">
-      <div class="col-md-3">
-        <h5 class="header-title"> Watch Series Online</h5>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <select class="form-control custom" formControlName="showStatus" (change)="genreData()">
-            <option value="">Show Status</option>
-            <option value="Running">Running</option>
-            <option value="Ended">Ended</option>
-            <option value="To Be Determined">To Be Determined</option>
-          </select>
+  <div *ngIf="hasError" class="text-center error">An error occurred ({{message}}). Please try again after sometime!
+  </div>
+  <div *ngIf="!hasError">
+    <form [formGroup]="showsForm" class="content-width">
+      <div class="d-flex flex-wrap" *ngIf="allShows">
+        <div class="col-md-3">
+          <h5 class="header-title"> Watch Series Online</h5>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <select class="form-control custom" formControlName="showStatus" (change)="genreData()">
+              <option value="">Show Status</option>
+              <option value="Running">Running</option>
+              <option value="Ended">Ended</option>
+              <option value="To Be Determined">To Be Determined</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <select class="form-control custom" formControlName="showRating" (change)="genreData()">
+              <option value=''>Rating</option>
+              <option *ngFor="let item of ratingArray" [value]="item">{{item}}+</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <select class="form-control custom" formControlName="sortBy" (change)="genreData()">
+              <option value="">Sort by</option>
+              <option value="A-Z">A-Z</option>
+              <option value="Z-A">Z-A</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <select class="form-control custom" formControlName="showRating" (change)="genreData()">
-            <option value=''>Rating</option>
-            <option *ngFor="let item of ratingArray" [value]="item">{{item}}+</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <select class="form-control custom" formControlName="sortBy" (change)="genreData()">
-            <option value="">Sort by</option>
-            <option value="A-Z">A-Z</option>
-            <option value="Z-A">Z-A</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </form>
-  <ng-container *ngIf="allShows">
-    <hr class="border-color">
-    <div class="content-width">
-      <app-show-list-template [searchResults]="allShowsData" [allShows]="allShows"></app-show-list-template>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="!allShows">
-    <div *ngFor="let key of categoryKeys" class="content-width">
-      <app-show-list-template [genreInput]="key" [searchResults]="showsDataCategory[key]"></app-show-list-template>
+    </form>
+    <ng-container *ngIf="allShows">
       <hr class="border-color">
-    </div>
-  </ng-container>
+      <div class="content-width">
+        <app-show-list-template [searchResults]="allShowsData" [allShows]="allShows"></app-show-list-template>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!allShows">
+      <div *ngFor="let key of categoryKeys" class="content-width">
+        <app-show-list-template [genreInput]="key" [searchResults]="showsDataCategory[key]"></app-show-list-template>
+        <hr class="border-color">
+      </div>
+    </ng-container>
+  </div>
 </div>
